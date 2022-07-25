@@ -6,7 +6,8 @@ public class EnemyPool : MonoBehaviour
 {
     [SerializeField] GameObject enemyPrefab;
     
-    [SerializeField] int poolSize = 10;
+    [SerializeField] [Range(1,50)] int poolSize = 10;
+    [SerializeField] [Range(0.1f,5f)] float spawnTimer = 1f;
     GameObject[] enemyPool;
 
     private void Awake()
@@ -52,7 +53,7 @@ public class EnemyPool : MonoBehaviour
         while (counter < enemyPool.Length)
         {
             GetObjectInPool();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(spawnTimer);
             
         }
     }
